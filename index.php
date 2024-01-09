@@ -30,15 +30,16 @@
 
 $conexion = mysqli_connect("34.171.239.70", "root", "123456", "BASEDATOS");
 
-        $cadenaSQL = "select * from agenda";
+        $cadenaSQL = "SELECT agenda.*, distrito.distrito as distrito FROM agenda LEFT JOIN distrito ON agenda.distrito_id = distrito.id";
         $resultado = mysqli_query($conexion, $cadenaSQL);
 
         while ($fila = mysqli_fetch_object($resultado)) {
-         echo "<tr><td> " .$fila->nombre . 
+         echo "<tr><td> " .$fila->nombre .
          "</td><td>" . $fila->apellido .
          "</td><td>" . $fila->direccion .
          "</td><td>" . $fila->telefijo .
-         "</td><td>" . $fila->telemovil .
+         "</td><td>" . $fila->telefmovi .
+"</td><td>" . $fila->distrito .
          "</td><td>" . $fila->email .
          "</td></tr>";
        }
